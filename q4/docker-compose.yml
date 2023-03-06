@@ -1,0 +1,15 @@
+version: '3'
+services:
+  nginx:
+    image: taihon/taihon-nginx
+    ports:
+      - 80:80
+    volumes:
+      - ./nginxhosts:/etc/nginx/http.d/
+      - ./www:/var/www
+    links:
+      - php
+  php:
+    image: taihon/taihon-php
+    volumes:
+      - ./www:/var/www
